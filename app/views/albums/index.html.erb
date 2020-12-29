@@ -1,4 +1,4 @@
 <h1>Albums List:</h1>
 <%@albums.each do |album|%>
-<%=link_to album.name, album%>, <%=album.release_year%> by <%=link_to album.artist.name, artist_path(album.artist)%>
+<%=link_to album.name, album%>, <%=album.release_year%> by <%=link_to album.artist.name, artist_path(album.artist)%> <br> 
 <%end%>

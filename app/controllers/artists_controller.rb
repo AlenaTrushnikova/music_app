@@ -5,6 +5,11 @@ class ArtistsController < ApplicationController
 
     def show
         @artist = Artist.find(params[:id])
-        @songs = Song.all
+        @songs =[]
+        @artist.albums.each do |album|
+            album.songs.each do |song|
+                @songs << song
+            end
+        end
     end
 end
