@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Genre.destroy_all
+Artist.destroy_all
+Album.destroy_all
+Song.destroy_all
+Playlist.destroy_all
+
+
+g1 = Genre.create(name: "Synthwave")
+
+ar1 = Artist.create(name: "Kavinsky", bio: "Vincent Belorgey, known professionally as Kavinsky, is a French musician, producer, DJ and actor.")
+
+al1 = Album.create(name: "The Lincoln Lawyer", release_year: "2011")
+
+s1 = Song.create(name: "Nightcall", artist_id: ar1.id, genre_id: g1.id, album_id: al1.id)
+
+puts 'done'
