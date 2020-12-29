@@ -1,5 +1,5 @@
 <h1><%=@artist.name%></h1>
 Songs: <br>
 <%@songs.each do |song|%>
-<%=song.name%> || <%=song.album.name%>, <%=song.album.release_year%>
+<%=link_to song.name, song%> || <%=link_to song.album.name, album_path(song.album)%>, <%=song.album.release_year%>
 <%end%>

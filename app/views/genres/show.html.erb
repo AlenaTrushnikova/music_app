@@ -1,0 +1,5 @@
+<h1><%=@genre.name%></h1>
+Artists in "<%=@genre.name%>" genre: <br>
+<%@artists.each do |artist|%>
+<%=link_to artist.name, artist%> <br>
+<%end%>

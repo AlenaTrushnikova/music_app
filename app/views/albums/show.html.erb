@@ -1,5 +1,7 @@
-<h1><%=@album.name%></h1> by GET ARTIST <%=@album.artists[name]%><br>
+<h1><%=@album.name%>, <%=@album.release_year%></h1> 
+
+by <%=link_to @album.artist.name, artist_path(@album.artist)%><br>
 <h2> Songs: </h2>
 <%@songs.each do |song|%>
-<%=song.name%> 
+<%=link_to song.name, song%> 
 <%end%>

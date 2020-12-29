@@ -1,4 +1,4 @@
 <h1>Songs List:</h1>
 <%@songs.each do |song|%>
-<%=link_to song.name, song%> by <%=link_to song.artist.name, song.artist%> || <%=song.album.name%>, <%=song.album.release_year%>
+<%=link_to song.name, song%> by <%=link_to song.album.artist.name, artist_path(song.album.artist)%> || <%=link_to song.album.name, album_path(song.album)%>, <%=song.album.release_year%>
 <%end%>

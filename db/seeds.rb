@@ -7,19 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Genre.destroy_all
 Artist.destroy_all
+Genre.destroy_all
 Album.destroy_all
 Song.destroy_all
-Playlist.destroy_all
 
-
-g1 = Genre.create(name: "Synthwave")
 
 ar1 = Artist.create(name: "Kavinsky", bio: "Vincent Belorgey, known professionally as Kavinsky, is a French musician, producer, DJ and actor.")
 
-al1 = Album.create(name: "The Lincoln Lawyer", release_year: "2011")
+g1 = Genre.create(name: "Synthwave", artist_id: ar1.id)
 
-s1 = Song.create(name: "Nightcall", artist_id: ar1.id, genre_id: g1.id, album_id: al1.id)
+al1 = Album.create(name: "The Lincoln Lawyer", release_year: "2011", artist_id: ar1.id)
+
+s1 = Song.create(name: "Nightcall", album_id: al1.id)
 
 puts 'done'
+
+ 
+

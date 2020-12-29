@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 2020_12_28_185826) do
     t.string "name"
     t.string "release_year"
     t.string "picture"
+    t.integer "artist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_albums_on_artist_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -29,8 +31,10 @@ ActiveRecord::Schema.define(version: 2020_12_28_185826) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.integer "artist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_genres_on_artist_id"
   end
 
   create_table "playlists", force: :cascade do |t|
@@ -44,11 +48,10 @@ ActiveRecord::Schema.define(version: 2020_12_28_185826) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
-    t.integer "artist_id"
-    t.integer "genre_id"
     t.integer "album_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_songs_on_album_id"
   end
 
   create_table "users", force: :cascade do |t|
