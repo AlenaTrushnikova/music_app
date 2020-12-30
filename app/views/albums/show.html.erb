@@ -3,7 +3,7 @@
 by <%=link_to @album.artist.name, artist_path(@album.artist)%><br>
 <h2> Songs: </h2>
 <%@songs.each do |song|%>
-<%=link_to song.name, song%> 
-<%end%> <br>
+<%=link_to song.name, song%> <br>
+<%end%> <br><br>
 
 <%= link_to "Back to Albums List", albums_path%>
