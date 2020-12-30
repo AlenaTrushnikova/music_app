@@ -1,4 +1,12 @@
 <h1>Songs List:</h1>
+
+<%= form_tag(songs_path, method: :get) do%>
+    <%= text_field_tag(:search, params[:search])%>
+    <%= submit_tag ("Search song")%>
+    <%end%> <br>
+
+
 <%@songs.each do |song|%>
 <%=link_to song.name, song%> by <%=link_to song.album.artist.name, artist_path(song.album.artist)%> || Album: <%=link_to song.album.name, album_path(song.album)%>, <%=song.album.release_year%> <br>
 <%end%>
+
