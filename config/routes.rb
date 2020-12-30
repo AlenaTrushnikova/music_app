@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'music_app/index'
   resources :albums
   resources :genres
   resources :artists
