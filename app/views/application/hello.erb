@@ -1,6 +1,8 @@
 <h1>Welcome to Musicapp</h1>
 
-<h1>Hi, <%= session[:name] %>.</h1>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+<% if logged_in? %>
+  <h3>You are logged in <%= current_user.username %></h3>
+<%end%>
+
+<%= button_to "Login", '/login', method :get %>
+<%= button_to "Sign Up", '/users/new', method :get %>

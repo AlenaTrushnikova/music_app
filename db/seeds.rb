@@ -11,6 +11,7 @@ Artist.destroy_all
 Genre.destroy_all
 Album.destroy_all
 Song.destroy_all
+User.destroy_all
 
 
 ar1 = Artist.create(name: "Kavinsky", bio: "Vincent Belorgey, known professionally as Kavinsky, is a French musician, producer, DJ and actor.")

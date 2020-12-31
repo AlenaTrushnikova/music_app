@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root 'application#hello'
+  get '/', to: 'sessions#welcome', as: 'root'
   # get 'music_app/index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get 'authorized' , to: 'sessions#page_requires_login'
   resources :albums
   resources :genres
   resources :artists
