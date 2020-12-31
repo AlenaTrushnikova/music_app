@@ -3,7 +3,7 @@ class Song < ApplicationRecord
     belongs_to :album
 
     def self.search(search)
-        if search           
+        if search  
             Song.where("lower(name) LIKE ?", "%" + search.downcase + "%")
         else
             Song.all

@@ -1,4 +1,9 @@
 class ApplicationRecord < ActiveRecord::Base
-  self.abstract_class = true
+  before_action :require_login
 
+    private
+
+    def require_login
+        redirect_to "/login" unless session.include? :user_id
+    end
 end
