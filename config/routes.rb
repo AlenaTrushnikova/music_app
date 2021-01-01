@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get 'authorized' , to: 'sessions#page_requires_login'
+  post 'add_song', to: 'songs#add_song_to_playlist'
   resources :albums
   resources :genres
   resources :artists
