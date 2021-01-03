@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             flash[:errors] = @user.errors.full_messages
             redirect_to new_user_path
         end 
-    end
+    end 
 
     private 
 

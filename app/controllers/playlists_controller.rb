@@ -12,7 +12,8 @@ class PlaylistsController < ApplicationController
     end
 
     def create
-
+        @playlist = @playable.playlists.create playlist_params
+        redirect_to @playable, notice: "Your playlist was successfully created!"
     end
 
     def update
@@ -20,7 +21,7 @@ class PlaylistsController < ApplicationController
     end
 
     def destroy
-        @platylist.delete
+        @playlist.delete
         redirect_to @playlists
     end
 

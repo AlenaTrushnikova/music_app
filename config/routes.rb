@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   resources :artists
   resources :songs
   resources :playlists
-  resources :users, only: [:show, :new, :create]
+  resources :users do 
+    resources :playlists, module: :users 
+  end
+  resources :songs do 
+    resources :playlists, module: :songs
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
