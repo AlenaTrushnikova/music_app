@@ -1,15 +1,9 @@
 <h1><%= @user.username %></h1>
 
-<%= form_with model:@playlist do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.submit %>
-<% end %>
-
-
 <h4>My Playlists!</h4>
 <%= render partial: "playlists/playlists", locals: {playable: @user}%>
 <%= render partial: "playlists/form", locals: {playable: @user}%>
+
 <div class= "well">
 <%= button_to "Logout", '/logout', method: :post%>
 </div>

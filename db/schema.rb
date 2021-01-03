@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_185826) do
+ActiveRecord::Schema.define(version: 2021_01_03_192812) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_185826) do
     t.integer "playable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "songs"
     t.index ["playable_type", "playable_id"], name: "index_playlists_on_playable"
   end
 
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_185826) do
     t.integer "album_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "playlists"
     t.index ["album_id"], name: "index_songs_on_album_id"
   end
 

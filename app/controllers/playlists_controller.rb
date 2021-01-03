@@ -17,8 +17,10 @@ class PlaylistsController < ApplicationController
     end
 
     def update
-
-    end
+        @playlist = @playable.playlists.find(params[:id])
+        @playlist.songs << @song
+        @playlist.save
+        redirect_to @playlist
 
     def destroy
         @playlist.delete
