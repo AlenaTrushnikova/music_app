@@ -12,7 +12,7 @@ class SongsInPlaylistsController < ApplicationController
 
 
     def destroy
-        
+        @add_song.delete
     end
 
     private 
