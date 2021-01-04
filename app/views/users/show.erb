@@ -1,0 +1,9 @@
+<h1><%= @user.username %></h1>
+
+<h4>My Playlists!</h4>
+<%= render partial: "playlists/playlists", locals: {playable: @user}%>
+<%= render partial: "playlists/form", locals: {playable: @user}%>
+
+<div class= "well">
+<%= button_to "Logout", '/logout', method: :post%>
+</div>
