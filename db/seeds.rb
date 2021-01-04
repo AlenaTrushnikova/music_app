@@ -13,6 +13,7 @@ Album.destroy_all
 Song.destroy_all
 User.destroy_all
 Playlist.destroy_all
+SongsInPlaylist.destroy_all
 
 ar1 = Artist.create(name: "Kavinsky", bio: "Vincent Belorgey, known professionally as Kavinsky, is a French musician, producer, DJ and actor.")
 ar2 = Artist.create(name: "Desire", bio: "Desire is a Canadian electronic music band from Montreal, formed in 2009. The band consists of vocalist Megan Louise, producer Johnny Jewel (also a member of Chromatics and Glass Candy), and Nat Walker (also a member of Chromatics) on synthesizer and drums.")
@@ -61,6 +62,11 @@ s32_4 = Song.create(name: "Trane's Blues", album_id: al32.id)
 s32_5 = Song.create(name: "Half Nelson", album_id: al32.id)
 
 u1 = User.create(username: "test", password: "12345", password_confirmation: "12345", email: "test@email.com")
+
+p1 = Playlist.create(name: "Jazz Playlist", playable_type: "User", playable_id: u1.id)
+
+s_in_pl1 = SongsInPlaylist.create(playlist_id: p1.id, song_id: u1.id)
+
 
 puts 'done'
 
