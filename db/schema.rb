@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_03_192812) do
+ActiveRecord::Schema.define(version: 2021_01_04_190203) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_01_03_192812) do
     t.integer "playable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "songs"
     t.index ["playable_type", "playable_id"], name: "index_playlists_on_playable"
   end
 
@@ -52,8 +51,16 @@ ActiveRecord::Schema.define(version: 2021_01_03_192812) do
     t.integer "album_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "playlists"
     t.index ["album_id"], name: "index_songs_on_album_id"
+  end
+
+  create_table "songs_in_playlists", force: :cascade do |t|
+    t.integer "playlist_id", null: false
+    t.integer "song_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["playlist_id"], name: "index_songs_in_playlists_on_playlist_id"
+    t.index ["song_id"], name: "index_songs_in_playlists_on_song_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,4 +71,6 @@ ActiveRecord::Schema.define(version: 2021_01_03_192812) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "songs_in_playlists", "playlists"
+  add_foreign_key "songs_in_playlists", "songs"
 end

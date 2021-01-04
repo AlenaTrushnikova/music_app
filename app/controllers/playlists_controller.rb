@@ -21,6 +21,7 @@ class PlaylistsController < ApplicationController
         @playlist.songs << @song
         @playlist.save
         redirect_to @playlist
+    end
 
     def destroy
         @playlist.delete

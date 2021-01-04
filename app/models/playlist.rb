@@ -1,4 +1,6 @@
 class Playlist < ApplicationRecord
     belongs_to :playable, :polymorphic => true
-    serialize :songs, Array
+    has_many :songs_in_playlists
+    has_many :songs, through: :songs_in_playlists
+    
 end

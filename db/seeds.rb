@@ -60,6 +60,8 @@ s32_3 = Song.create(name: "In Your Own Sweet Way", album_id: al32.id)
 s32_4 = Song.create(name: "Trane's Blues", album_id: al32.id)
 s32_5 = Song.create(name: "Half Nelson", album_id: al32.id)
 
+u1 = User.create(username: "test", password: "12345", password_confirmation: "12345", email: "test@email.com")
+
 puts 'done'
 
  

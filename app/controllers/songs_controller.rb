@@ -17,7 +17,7 @@ class SongsController < ApplicationController
     def update
         @song = Song.find(params[:id])
         @playlist = Playlist.find_by(id: params[@song.playlist_ids])
-        byebug
+        
         redirect_to @song
     end
 

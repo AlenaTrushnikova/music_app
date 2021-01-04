@@ -15,6 +15,4 @@
             <%=song.album.release_year%> <br>
         <%end%>
     <%end%>    
-<%@songs.each do |song|%>
-<%=link_to song.name, "/songs/#{song.id}/edit" %> by <%=link_to song.album.artist.name, artist_path(song.album.artist)%> || Album: <%=link_to song.album.name, album_path(song.album)%>, <%=song.album.release_year%> <br>
-<%end%>
+

@@ -23,8 +23,4 @@ class ApplicationController < ActionController::Base
         redirect_to root_path unless logged_in?
     end
 
-    def current_playlist
-        session[:playlist] ||= []
-    end
-
 end
