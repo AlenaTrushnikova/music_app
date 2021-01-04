@@ -1,4 +1,4 @@
-<%= form_with model:@song do |f| %>
+<%= form_with model:@songs_in_playlist do |f| %>
     <%= f.label :playlist %>
     <%= f.collection_select :playlists, @playlists, :id, :name %>
     <%= f.submit %>

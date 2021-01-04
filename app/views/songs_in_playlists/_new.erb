@@ -1,0 +1,6 @@
+<%= form_for [@add_song, SongsInPlaylist.new] do |f| %>
+    <%= f.label :playlist %>
+    <%= f.collection_select :playlist_id, @playlists, :id, :name %>
+    <%= f.hidden_field :song_id, :value => @song.id %>
+    <%= f.submit %>
+<% end %>

@@ -1,4 +1,4 @@
-class Songs::PlaylistsController < PlaylistsController
+class Songs::SongsInPlaylistsController < SongsInPlaylistsController
     before_action :set_playable
 
     private 

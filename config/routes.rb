@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :artists
   resources :songs
   resources :playlists
+  resources :songs_in_playlists, only: [:new, :create]
   resources :users do 
     resources :playlists, module: :users 
   end
