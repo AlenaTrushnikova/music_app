@@ -2,7 +2,7 @@
 
 <% @playlist.songs.each do |song| %>
     <div class="well">
-        <p><%= song.name %></p>
+        <p><%= link_to song.name, song %></p>
     </div>
 <% end %>
     
