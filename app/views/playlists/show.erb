@@ -2,7 +2,11 @@
 
 <% @playlist.songs.each do |song| %>
     <div class="well">
-        <p><%= link_to song.name, song %></p>
+        <h5>Song: <%= link_to song.name, song %></h5>
+            <ul>
+                <li>Artist: <%= link_to song.album.artist.name, artist_path(song.album.artist) %>
+                <li>Album: <%= link_to song.album.name, album_path(song.album) %>
+            </ul>
     </div>
 <% end %>
     

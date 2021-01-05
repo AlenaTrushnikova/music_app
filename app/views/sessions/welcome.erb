@@ -2,7 +2,16 @@
 
 <% if logged_in? %>
   <h3>You are logged in <%= current_user.username %>!</h3>
+
+  <div class="well">
+  <%= button_to "Your Playlists", '/playlists', method: :get %>
+  </div>
+  <div class="well">
+  <%= button_to "Browse Songs", '/songs', method: :get %>
+  </div>
+  <div>
   <%= button_to "Logout", '/logout', method: :post%>
+  </div>
 <%else%>
   <%= button_to "Login", '/login', method: :get %>
   <%= button_to "Sign Up", '/users/new', method: :get %> 

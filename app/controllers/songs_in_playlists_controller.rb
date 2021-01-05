@@ -7,7 +7,12 @@ class SongsInPlaylistsController < ApplicationController
 
     def create
         @add_song = SongsInPlaylist.create(add_song_params)
-        redirect_to "/playlists/#{@add_song.playlist_id}"
+        if @add_song.valid?
+            redirect_to "/playlists/#{@add_song.playlist_id}"
+        else            
+            flash[:errors] = @add_song.errors.full_messages
+            redirect_to "/songs/#{@add_song.song_id}"
+        end 
     end
 
 

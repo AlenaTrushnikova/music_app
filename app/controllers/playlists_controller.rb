@@ -16,13 +16,6 @@ class PlaylistsController < ApplicationController
         redirect_to @playable, notice: "Your playlist was successfully created!"
     end
 
-    def update
-        @playlist = @playable.playlists.find(params[:id])
-        @playlist.songs << @song
-        @playlist.save
-        redirect_to @playlist
-    end
-
     def destroy
         @playlist.delete
         redirect_to @playlists

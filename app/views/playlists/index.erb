@@ -1,0 +1,7 @@
+<h1> Hi <%= current_user.username %>! Here are your playlists:</h1>
+
+<% @playlists.each do |playlist| %>
+    <div class="well">
+        <%= link_to playlist.name, playlist %>
+    </div>
+<% end %>

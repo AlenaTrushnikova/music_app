@@ -1,5 +1,11 @@
 <h1><%=@song.name%></h1>
 by <%=link_to @song.album.artist.name, artist_path(@song.album.artist)%> <br><br>
 
-<%= render partial: "songs_in_playlists/new", locals: {playable: @song}%>
+<%= render partial: "songs_in_playlists/new" %> 
+<div>
+<% if flash[:errors] %>
+    <%= "song already added to playlist" %>
+<% end %>
+</div>
+
 <%= link_to "Back to Songs List", songs_path%>

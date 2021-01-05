@@ -14,19 +14,12 @@ class SongsController < ApplicationController
         @playlists = Playlist.all
     end
 
-    def update
-        @song = Song.find(params[:id])
-        @playlist = Playlist.find_by(id: params[@song.playlist_ids])
-        
-        redirect_to @song
-    end
-
 
     private
 
 
     def song_params
-        params.require(:song).permit(:name, :playlist_ids, :album_id, :search)
+        params.require(:song).permit(:name, :album_id, :search)
     end
 
 end
