@@ -13,4 +13,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 //= require jquery3
+//= require bootstrap-sprockets
 //= require bootstrap
