@@ -16,6 +16,7 @@
 //  @import "bootstrap-sprockets";
 //  @import "bootstrap"; <-- didn't work, added bootstrap in app layouts
 
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -25,6 +26,7 @@ html {
   body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background-color:#f5f5f5;
   }
   .footer {
     position: absolute;

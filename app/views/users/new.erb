@@ -1,25 +1,45 @@
-<% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-        <%= error %>
-    <% end %>
-<% end %>
 
-<h1>Create a Profile</h1>
+
+<h1 class="text-white">Create a Profile</h1>
 
 <%= form_for @user do |f| %>
-    <%= f.label  :username %>
-    <%= f.text_field :username %><br>
+    <div class="form-group row text-white">
+        <%= f.label  :username %>
+        <div class="col-sm-3">
+            <%= f.text_field :username, class: 'form-control mx-sm-3' %> <br>
+        </div>
+    </div>
 
-    <%= f.label  :password %>
-    <%= f.password_field :password %><br>
+    <div class="form-group row text-white">
+        <%= f.label  :password %>
+        <div class="col-sm-3">
+            <%= f.password_field :password, class: 'form-control mx-sm-3' %><br>
+        </div>
+    </div>
 
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %><br>
+    <div class="form-group row text-white">
+        <%= f.label :password_confirmation %>
+        <div class="col-sm-3">
+            <%= f.password_field :password_confirmation, class: 'form-control mx-sm-3' %><br>
+        </div>
+    </div>
 
-    <%= f.label  :email %>
-    <%= f.text_field :email %><br>
+    <div class="form-group row text-white">
+        <%= f.label  :email %>
+        <div class="col-sm-3">
+            <%= f.text_field :email, class: 'form-control mx-sm-3' %><br><br>
+        </div>
+    </div>
 
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-success'%>
 <% end %>
+
+<div class="text-white">
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <%= error %> <br>
+        <% end %>
+    <% end %>
+</div>
 
      

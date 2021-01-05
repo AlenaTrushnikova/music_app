@@ -1,7 +1,7 @@
-<h1><%= @playlist.name %></h1>
+<h1 class="text-white"><%= @playlist.name %></h1>
 
 <% @playlist.songs.each do |song| %>
-    <div class="well">
+    <div class="text-white">
         <h5>Song: <%= link_to song.name, song %></h5>
             <ul>
                 <li>Artist: <%= link_to song.album.artist.name, artist_path(song.album.artist) %>

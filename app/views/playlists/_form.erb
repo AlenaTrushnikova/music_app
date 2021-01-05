@@ -1,6 +1,7 @@
 <%= form_for [playable, Playlist.new] do |f| %>
-    <div class="form-group">
-        <%= f.text_field :name, class:"form-control", placeholder: "Create a playlist" %>
-    </div>
-    <%= f.submit class: "btn btn-primary" %>
+    <div class="form-group col-sm-3">
+        <%= f.text_field :name, class:"form-control", placeholder: "Playlist Name" %>
+    </div> 
+    <%= f.submit class: "btn btn-success" %>
 <% end %>
+
