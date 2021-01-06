@@ -6,4 +6,8 @@ class Artist < ApplicationRecord
         Song.joins(:album).where('albums.artist_id' => self.id)
     end
 
+    def artist_songs
+        self.songs.length
+    end
+
 end

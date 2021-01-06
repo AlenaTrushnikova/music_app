@@ -6,9 +6,9 @@ class Playlist < ApplicationRecord
 
     def self.playlist_search(search)
         if search  
-            Song.where("lower(name) LIKE ?", "%" + search.downcase + "%")
+            self.songs.where("lower(name) LIKE ?", "%" + search.downcase + "%")
         else
-            Song.all
+            self.songs
         end
     end
 
