@@ -1,4 +1,19 @@
-<h1>Artist List:</h1>
-<%@artists.each do |artist|%>
-<%=link_to artist.name, artist%> || Genre: <%= link_to artist.genre.name, genre_path(artist.genre)%> <br>
-<%end%>
+<h1 class="text-white">Artist List</h1>
+
+
+<table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Artist</th>
+                <th scope="col">Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%@artists.each do |artist|%>
+                <tr>
+                    <td class="text-white"><%=link_to artist.name, artist, class: 'text-white'%> </td>
+                    <td class="text-white"><%=link_to artist.genre.name, genre_path(artist.genre), class: 'text-white'%> </td>
+                </tr>
+            <%end%> 
+        </tbody>
+    </table>

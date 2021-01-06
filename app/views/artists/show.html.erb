@@ -1,6 +1,22 @@
-<h1><%=@artist.name%></h1>
-Songs: <br>
-<%@songs.each do |song|%>
-<%=link_to song.name, song%> || <%=link_to song.album.name, album_path(song.album)%>, <%=song.album.release_year%> <br>
-<%end%> <br><br>
-<%= link_to "Back to Artists List", artists_path%>
+<h1 class="text-white" >Songs by <%=link_to @artist.name, artists_path, class: 'text-white'%></h1>
+    
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Song Name</th>
+            <th scope="col">Album</th>
+            <th scope="col">Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%@songs.each do |song|%>
+            <tr>
+                <td class="text-white"><%=link_to song.name, song, class: 'text-white'%> </td>
+                <td class="text-white"><%=link_to song.album.name, album_path(song.album), class: 'text-white'%></td>
+                <td><%=song.album.release_year%> </td>
+            </tr>
+        <%end%> 
+    </tbody>
+</table>
+
+<%# <%= link_to "Back to Artists List", artists_path%>

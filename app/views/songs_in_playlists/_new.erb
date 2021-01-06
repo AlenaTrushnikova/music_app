@@ -1,6 +1,8 @@
 <%= form_for [@add_song, SongsInPlaylist.new] do |f| %>
+    <div class="text-white">
     <%= f.label "Add to playlist" %>
-    <%= f.collection_select :playlist_id, @playlists, :id, :name %>
+    <%= f.collection_select :playlist_id, @playlists, :id, :name, {class: "dropdown-menu dropdown-menu-dark"}  %>
     <%= f.hidden_field :song_id, :value => @song.id %>
-    <%= f.submit value: "Add" %>
+    <%= f.submit value: "Add", class: 'btn btn-success btn-sm'%>
+    </div>
 <% end %>
