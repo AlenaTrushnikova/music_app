@@ -1,4 +1,4 @@
-<h1 class="text-white" >Songs by <%=link_to @artist.name, artists_path, class: 'text-white'%></h1>
+<h1 class="text-white" >Songs by <%=@artist.name%></h1>
     
 <table style="width:60%" class="table table-dark table-striped">
     <thead>
@@ -18,5 +18,3 @@
         <%end%> 
     </tbody>
 </table>
-
-<%# <%= link_to "Back to Artists List", artists_path%>
