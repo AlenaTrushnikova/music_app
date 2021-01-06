@@ -1,10 +1,12 @@
 class PlaylistsController < ApplicationController
-    before_action :set_playlist, only: [:show, :update, :destroy]
+    before_action :set_playlist, only: [:show, :update, :destroy, :remove_song]
     def show
     end
 
     def index
         @playlists = Playlist.all
+        @user = current_user
+        @songs = Song.playlist_search(params[:search])
     end
 
     def new
@@ -12,13 +14,23 @@ class PlaylistsController < ApplicationController
     end
 
     def create
-        @playlist = @playable.playlists.create playlist_params
-        redirect_to @playable, notice: "Your playlist was successfully created!"
+        @playlist = Playlist.create playlist_params
+        if @playlist.valid?
+            redirect_to @playlist
+        else
+            flash[:errors] = @playlist.errors.full_messages
+            redirect_to playlists_path
+        end
     end
 
     def destroy
-        @playlist.delete
-        redirect_to @playlists
+        @playlist.destroy
+        redirect_to playlists_path
+    end
+
+    def remove_song
+        SongsInPlaylist.find_by(playlist_id: @playlist.id, song_id: params[:song_id]).destroy
+        redirect_to @playlist
     end
 
     private 
@@ -28,7 +40,7 @@ class PlaylistsController < ApplicationController
     end
 
     def playlist_params
-        params.require(:playlist).permit(:name)
+        params.require(:playlist).permit(:name, :playable_type, :playable_id)
     end
 
 end

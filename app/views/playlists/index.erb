@@ -1,7 +1,15 @@
-<h1> Hi <%= current_user.username %>! Here are your playlists:</h1>
+<h1 class="text-white"> Your Playlists</h1>
 
-<% @playlists.each do |playlist| %>
-    <div class="well">
-        <%= link_to playlist.name, playlist %>
+<div class="container">
+    <div class="row g-2">
+        <% @playlists.each do |playlist| %> 
+            <div class="col-6">
+                <h4 class="p-3 bg-dark"> 
+                    <%= link_to playlist.name, playlist, class: 'text-success' %> 
+                </h4> 
+            </div>
+        <% end %>
     </div>
-<% end %>
+</div>
+
+<%= render partial: "playlists/form", locals: {playable: @user}%>

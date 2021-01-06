@@ -1,5 +1,11 @@
- <% playable.playlists.each do |playlist| %> 
-        <div class="well">
-        <%= link_to playlist.name, playlist %>
-        </div>
-    <% end %>
+<div class="container">
+    <div class="row g-2">
+        <% playable.playlists.each do |playlist| %> 
+            <div class="col-6">
+                <h4 class="p-3 bg-dark"> 
+                    <%= link_to playlist.name, playlist, class: 'text-success' %> 
+                </h4> 
+            </div>
+        <% end %>
+    </div>
+</div>   
