@@ -1,7 +1,6 @@
 <%= form_for [playable, Playlist.new] do |f| %>
     <div class="form-group col-sm-3">
-        <%= f.text_field :name, class:"form-control", placeholder: "Playlist Name" %>
+        <%= f.text_field :name, class:"search-line", placeholder: "Playlist Name" %>
     </div> 
     <%= f.submit class: "btn btn-success" %>
 <% end %>
-

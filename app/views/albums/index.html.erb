@@ -1,4 +1,20 @@
-<h1>Albums List:</h1>
-<%@albums.each do |album|%>
-<%=link_to album.name, album%>, <%=album.release_year%> by <%=link_to album.artist.name, artist_path(album.artist)%> <br> 
-<%end%>
+<h1 class="text-white">All Albums</h1>
+
+<table style="width:50%"class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Album</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%@albums.each do |album|%>
+            <tr>
+                <td class="text-white"><%=link_to album.name, album, class: 'text-white'%> </td>
+                <td class="text-white"><%=link_to album.artist.name, artist_path(album.artist), class: 'text-white'%> </td>
+                <td class="text-white"><%=album.release_year%> </td>
+            </tr>
+        <%end%> 
+    </tbody>
+</table>

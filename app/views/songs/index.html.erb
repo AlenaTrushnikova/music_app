@@ -2,7 +2,7 @@
 
 <%= form_tag(songs_path, method: :get) do%>
      <form class="form-inline md-form mr-auto mb-4">
-        <%= text_field_tag :search, params[:search], class: 'search-line mr-sm-2', placeholder: 'Search'%>
+        <%= text_field_tag :search, params[:search], class: 'search-line mr-sm-2', placeholder: 'Search by name'%>
     </form>
 <%end%> <br>
 
@@ -12,10 +12,10 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col">Song Name</th>
-                <th scope="col">Artist</th>
-                <th scope="col">Album</th>
-                <th scope="col">Year</th>
+                <th style="width:40%" scope="col">Name</th>
+                <th style="width:25%" scope="col">Artist</th>
+                <th style="width:28%" scope="col">Album</th>
+                <th style="width:7%" scope="col">Year</th>
             </tr>
         </thead>
         <tbody>

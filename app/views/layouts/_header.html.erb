@@ -7,13 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= user_path(current_user.id)%>">Home</a>
+            <% if logged_in? %>
+                <a class="nav-link active" aria-current="page" href="<%= user_path(current_user.id)%>">Home</a>
+            <%else%>
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <%end%>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/playlists">My Playlists</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/songs">Songs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/artists">Artists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/albums">Albums</a>
         </li>
       </ul>
 

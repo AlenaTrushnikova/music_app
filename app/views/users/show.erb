@@ -3,3 +3,11 @@
 <h3 class="text-white">Your Playlists</h3> 
 <%= render partial: "playlists/playlists", locals: {playable: @user}%> <br>
 <%= render partial: "playlists/form", locals: {playable: @user}%><br>
+
+<div class="text-white">
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <%= error %> <br>
+        <% end %>
+    <% end %>
+</div>
