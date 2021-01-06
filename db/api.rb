@@ -1,22 +1,6 @@
+require 'pry'
 require 'rest-client'
 require 'json'
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
-Artist.destroy_all
-Genre.destroy_all
-Album.destroy_all
-Song.destroy_all
-User.destroy_all
-Playlist.destroy_all
-SongsInPlaylist.destroy_all
 
 top_artists = [
     "The Beatles",
@@ -232,6 +216,7 @@ top_artists = [
 "Arctic Monkeys",
 "Roxy Music",
 "Jackson Browne",
+"Bjork",
 "John Lee Hooker",
 "Oasis",
 "TLC",
@@ -250,6 +235,7 @@ top_artists = [
 "Dr. John",
 "Big Star",
 "PJ Harvey",
+"Sinead O'Connor",
 "Wire",
 "Minutemen",
 "The Go Go's",
@@ -271,6 +257,7 @@ top_artists = [
 "DEVO",
 "War",
 "Steve Miller Band",
+"Stan GetzÊ/ÊJoao GilbertoÊfeaturingÊAntonio Carlos Jobim",
 "Amy Winehouse",
 "John Prine",
 "EPMD",
@@ -297,6 +284,7 @@ top_artists = [
 "Gang of Four",
 "Earth, Wind & Fire",
 "Cyndi Lauper",
+"Husker Du",
 "Albert King",
 "Eurythmics",
 "Wilco",
@@ -306,98 +294,20 @@ top_artists = [
 ]
 
 
-#returns all artist names in API w/ Artist descriptions
-@artist_array = []
-@album_ids = [] 
-api_key = 523532
-top_artists.each do |artist|
-    begin
-        audiodb = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=#{artist}"
-        JSON.parse(audiodb)["artists"][0]["strArtist"] == nil || JSON.parse(audiodb)["artists"][0]["strBiographyEN"] == nil
-        name = JSON.parse(audiodb)["artists"][0]["strArtist"]
-        bio = JSON.parse(audiodb)["artists"][0]["strBiographyEN"]
-        @artist = Artist.create(name: name, bio: bio)
-        @artist_array << @artist.name
-    rescue NoMethodError, RuntimeError
-        next(artist)
-    end
-end
+# api_key = 523532
+# audiodb = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=awefasdf"
+# name = JSON.parse(audiodb)["artists"][0]["strArtist"]
+# bio = JSON.parse(audiodb)["artists"][0]["strBiographyEN"]
 
-# seeds all albums associated with an artist
-@artist_array.each do |artist|
-    album_db = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/searchalbum.php?s=#{artist}"
-    @artist_id = Artist.find_by(name: artist).id
-    album_array = JSON.parse(album_db)["album"]
-    album_array.each do |album|
-        album_name = album["strAlbum"]
-        album_year = album["intYearReleased"]
-        album_picture = album["strAlbumThumb"]
-        id = album["idAlbum"]
-        Album.create(name: album_name, release_year: album_year, picture: album_picture, artist_id: @artist_id)
-        @album_ids << id
-    end
-end
+album_db = RestClient.get "theaudiodb.com/api/v1/json/523532/searchalbum.php?s=daft_punk"
+name = JSON.parse(album_db)["album"][1]["strAlbum"]
 
-puts @album_ids
+puts name
+
 
 @artist_array.each do |artist|
     genre_db = RestClient.get RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=#{artist}"
+    artist_id = Artist.find_by(name: artist).id
     genre = JSON.parse(genre_db)["artists"][0]["strGenre"]
-    Genre.create(name: genre, artist_id: @artist_id)
+    Genre.create(name: genre, artist_id: artist_id)
 end
-
-# ar1 = Artist.create(name: "Kavinsky", bio: "Vincent Belorgey, known professionally as Kavinsky, is a French musician, producer, DJ and actor.")
-# ar2 = Artist.create(name: "Desire", bio: "Desire is a Canadian electronic music band from Montreal, formed in 2009. The band consists of vocalist Megan Louise, producer Johnny Jewel (also a member of Chromatics and Glass Candy), and Nat Walker (also a member of Chromatics) on synthesizer and drums.")
-# ar3 = Artist.create(name: "Miles Davis", bio: "Miles Dewey Davis III was an American jazz trumpeter, bandleader, and composer. He is among the most influential and acclaimed figures in the history of jazz and 20th-century music.")
-
-
-
-# g1 = Genre.create(name: "Synthwave", artist_id: ar1.id)
-# g2 = Genre.create(name: "Dance/Electronic", artist_id: ar2.id)
-# g3 = Genre.create(name: "Jazz", artist_id: ar3.id)
-
-# al11 = Album.create(name: "The Lincoln Lawyer", release_year: "2011", artist_id: ar1.id)
-# al12 = Album.create(name: "OutRun", release_year: "2011", artist_id: ar1.id)
-# al21 = Album.create(name: "Desire", release_year: "2009", artist_id: ar2.id)
-# al31 = Album.create(name: "King of Blue", release_year: "1959", artist_id: ar3.id)
-# al32 = Album.create(name: "Workin'", release_year: "1960", artist_id: ar3.id)
-
-
-# s11_1 = Song.create(name: "Nightcall", album_id: al11.id)
-# s11_2 = Song.create(name: "Pacific Coast Highway", album_id: al11.id)
-
-# s12_1 = Song.create(name: "Prelude", album_id: al12.id)
-# s12_2 = Song.create(name: "Blizzard", album_id: al12.id)
-# s12_3 = Song.create(name: "ProtoVision", album_id: al12.id)
-# s12_4 = Song.create(name: "Odd Look", album_id: al12.id)
-# s12_5 = Song.create(name: "Rampage", album_id: al12.id)
-
-
-
-# s21_1 = Song.create(name: "Under Your Spell", album_id: al21.id)
-# s21_2 = Song.create(name: "Morroir Morroir", album_id: al21.id)
-# s21_3 = Song.create(name: "Don't Call", album_id: al21.id)
-# s21_4 = Song.create(name: "Colorless Sky", album_id: al21.id)
-
-# s31_1 = Song.create(name: "So What", album_id: al31.id)
-# s31_2 = Song.create(name: "Freddie Freeloader", album_id: al31.id)
-# s31_3 = Song.create(name: "Blue in Green", album_id: al31.id)
-# s31_4 = Song.create(name: "All Blues", album_id: al31.id)
-# s31_5 = Song.create(name: "Flamenco Sketches", album_id: al31.id)
-
-# s32_1 = Song.create(name: "It Never Entered My Mind", album_id: al32.id)
-# s32_2 = Song.create(name: "Four", album_id: al32.id)
-# s32_3 = Song.create(name: "In Your Own Sweet Way", album_id: al32.id)
-# s32_4 = Song.create(name: "Trane's Blues", album_id: al32.id)
-# s32_5 = Song.create(name: "Half Nelson", album_id: al32.id)
-
-# u1 = User.create(username: "test", password: "12345", password_confirmation: "12345", email: "test@email.com")
-
-# p1 = Playlist.create(name: "Jazz Playlist", playable_type: "User", playable_id: u1.id)
-
-# s_in_pl1 = SongsInPlaylist.create(playlist_id: p1.id, song_id: u1.id)
-
-puts 'done'
-
- 
-
