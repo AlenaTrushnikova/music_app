@@ -323,6 +323,8 @@ top_artists.each do |artist|
     end
 end
 
+
+
 # seeds all albums associated with an artist
 @artist_array.each do |artist|
     album_db = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/searchalbum.php?s=#{artist}"
@@ -338,13 +340,40 @@ end
     end
 end
 
-puts @album_ids
-
 @artist_array.each do |artist|
-    genre_db = RestClient.get RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=#{artist}"
+    genre_db = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=#{artist}"
+    @artist_id = Artist.find_by(name: artist).id
     genre = JSON.parse(genre_db)["artists"][0]["strGenre"]
     Genre.create(name: genre, artist_id: @artist_id)
 end
+
+@album_ids.each do |album|
+
+    begin
+    song_db = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/track.php?m=#{album}"
+    song_array = JSON.parse(song_db)["track"]
+    name_of_album = JSON.parse(song_db)["track"][0]["strAlbum"]
+    song_album_id = Album.find_by(name: name_of_album)
+
+    if song_album_id
+        song_array.each do |song|
+            song_name = song["strTrack"]
+            Song.create(name: song_name, album_id: song_album_id.id) 
+        end
+    end
+
+    rescue NoMethodError
+        next(album)
+    end
+
+end
+
+
+# @artist_array.each do |artist|
+#     genre_db = RestClient.get RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=#{artist}"
+#     genre = JSON.parse(genre_db)["artists"][0]["strGenre"]
+#     Genre.create(name: genre, artist_id: @artist_id)
+# end
 
 # ar1 = Artist.create(name: "Kavinsky", bio: "Vincent Belorgey, known professionally as Kavinsky, is a French musician, producer, DJ and actor.")
 # ar2 = Artist.create(name: "Desire", bio: "Desire is a Canadian electronic music band from Montreal, formed in 2009. The band consists of vocalist Megan Louise, producer Johnny Jewel (also a member of Chromatics and Glass Candy), and Nat Walker (also a member of Chromatics) on synthesizer and drums.")
