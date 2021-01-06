@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :genres
   resources :artists
   resources :songs
-  resources :playlists
+  resources :playlists do
+    delete 'remove_song'
+  end
   resources :songs_in_playlists, only: [:new, :create]
   resources :users do 
     resources :playlists, module: :users 

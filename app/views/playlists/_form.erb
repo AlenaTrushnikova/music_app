@@ -1,6 +1,17 @@
 <%= form_for [playable, Playlist.new] do |f| %>
     <div class="form-group col-sm-3">
         <%= f.text_field :name, class:"search-line", placeholder: "Playlist Name" %>
-    </div> 
+    </div>
+    <%= f.hidden_field :playable_type, :value => "User" %>
+    <%= f.hidden_field :playable_id, :value => playable.id %>
     <%= f.submit class: "btn btn-success" %>
 <% end %>
+
+<div class="text-grey">
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <%= error %> <br>
+    <% end %>
+  <% end %>
+</div>
+

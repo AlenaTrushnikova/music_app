@@ -5,8 +5,10 @@
         <tr>
             <th style="width:40%" scope="col">Name</th>
             <th style="width:25%" scope="col">Artist</th>
-            <th style="width:28%" scope="col">Album</th>
+            <th style="width:25%" scope="col">Album</th>
             <th style="width:7%" scope="col">Year</th>
+            <th style="width:3%" scope="col">Remove</th>
+
         </tr>
     </thead>
     <tbody>
@@ -16,9 +18,10 @@
                 <td class="text-white"><%=link_to song.album.artist.name, artist_path(song.album.artist), class: 'text-white'%> </td>
                 <td class="text-white"><%=link_to song.album.name, album_path(song.album), class: 'text-white'%></td>
                 <td><%=song.album.release_year%> </td>
+                <td><%= button_to "delete", playlist_remove_song_path(@playlist.id), params: {id: @playlist.id, song_id: song.id}, :method => :delete, class: 'btn btn-outline-light'%></td>
             </tr>
-        <%end%> 
+        <%end%>
     </tbody>
-</table><br>  
+</table><br>
 
 <%= button_to "Delete Playlist", @playlist, :method => :delete, class: 'btn btn-outline-light'%>
