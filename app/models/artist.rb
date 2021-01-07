@@ -10,4 +10,12 @@ class Artist < ApplicationRecord
         self.songs.length
     end
 
+    def self.search(search)
+        if search  
+            Artist.where("lower(name) LIKE ?", "%" + search.downcase + "%").slice(0...10)
+        else
+            Artist.all
+        end
+    end
+
 end

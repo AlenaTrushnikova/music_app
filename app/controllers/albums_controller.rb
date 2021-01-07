@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
     def index
-        @albums = Album.all
+        @albums = Album.search(params[:search])
     end
 
     def show

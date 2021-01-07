@@ -1,5 +1,11 @@
 <h1 class="text-white">All Artist</h1>
 
+<%= form_tag(artists_path, method: :get) do%>
+     <form class="form-inline md-form mr-auto mb-4">
+        <%= text_field_tag :search, params[:search], class: 'search-line mr-sm-2', placeholder: 'Search by name'%>
+    </form>
+<%end%> <br>
+
 
 <table style="width:50%" class="table table-dark table-striped">
     <thead>

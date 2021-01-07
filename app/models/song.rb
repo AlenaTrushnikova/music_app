@@ -14,10 +14,4 @@ class Song < ApplicationRecord
         end
     end
 
-    # def next_slice
-    #     @first_index += 10
-    #     @last_index += 10
-    #     Song.all.slice(@first_index...@last_index)
-    # end
-
 end
