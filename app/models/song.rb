@@ -6,18 +6,10 @@ class Song < ApplicationRecord
 
     def self.search(search)
         if search  
-            Song.where("lower(name) LIKE ?", "%" + search.downcase + "%").slice(0..10)
+            Song.where("lower(name) LIKE ?", "%" + search.downcase + "%")
         else
-            @first_index = 0
-            @last_index = 10
-            Song.all.slice(@first_index...@last_index)
+            Song.all
         end
     end
-
-    # def next_slice
-    #     @first_index += 10
-    #     @last_index += 10
-    #     Song.all.slice(@first_index...@last_index)
-    # end
 
 end
