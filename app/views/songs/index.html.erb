@@ -29,4 +29,14 @@
             <%end%> 
         </tbody>
     </table>
-<%end%> 
+<%end%>
+
+<div class="btn-group" role="group">
+<%if params[:page].to_i > 1%>
+  <%= button_to "prev", songs_path, params: {:page => (params[:page].to_i - 1).to_s}, :method => :get, class: 'btn btn-light'%> &nbsp;
+<%end %>
+
+<%if params[:page].to_i < @last_page %>
+  <%= button_to "next", songs_path, params: {:page => ((params[:page] ? params[:page].to_i : 1) + 1).to_s}, :method => :get, class: 'btn btn-success'%>
+<%end %>
+</div>

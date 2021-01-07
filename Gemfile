@@ -66,4 +66,7 @@ gem 'rest-client'
 gem 'pry'
 gem 'json', '~> 1.8', '>= 1.8.3'
 #ruby gem for authentication
+#
+# gem for pagination
+gem 'will_paginate', '~> 3.1.1'
 
