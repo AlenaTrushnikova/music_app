@@ -1,4 +1,4 @@
-<h1 class="text-white" >Albums by <%=@artist.name%></h1>
+<h1 class="text-white" ><%=@artist.name%></h1>
     
 <table style="width:60%" class="table table-dark table-striped">
     <thead>
@@ -16,3 +16,10 @@
         <%end%> 
     </tbody>
 </table>
+
+<%if @artist.bio%>
+    <h3 class="text-white" >Background:</h3>
+    <div class="text-white">
+    <%=@artist.bio%>
+    </div>
+<%end%>

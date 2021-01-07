@@ -2,20 +2,36 @@
 
 <h3 class="text-white">by <%=link_to @album.artist.name, artist_path(@album.artist), class: 'text-white'%></h3><br>
 <h2 class="text-white" > Songs in this album </h2>
-<table style="width:40%" class="table table-dark table-striped">
-    <thead>
-        <tr>
-            <th scope="col"> Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <%@songs.each do |song|%>
-            <tr>
-                <td class="text-white"><%=link_to song.name, song, class: 'text-white'%> </td>
-            </tr>
-        <%end%> 
-    </tbody>
-</table><br><br>
+
+<div class = "container">
+    <div class="row row-cols-auto">
+        <div class="col">
+        <table style="width:100%" class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> Name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <%@songs.each do |song|%>
+                    <tr>
+                        <td class="text-white"><%=link_to song.name, song, class: 'text-white'%> </td>
+                    </tr>
+                <%end%> 
+            </tbody>
+        </table><br><br>
+        </div>
+        
+
+        <div class="col">
+        <% if @album.picture %>
+        <img src=<%=@album.picture%> style="width:50%" class="img-responsive" alt="Album Artwork">
+        <%end%>
+        </div>
+    </div>
+</div>
+
 
 <%# <%= link_to "All Albums", albums_path%>
 
