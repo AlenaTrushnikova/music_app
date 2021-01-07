@@ -18,13 +18,13 @@
         </tr>
     </thead>
     <tbody>
-        <% @playlist.songs.each do |song| %>
+        <% @songs.each do |song| %>
             <tr>
-                <td class="text-white"><%=link_to song.name, song, class: 'text-white'%> </td>
-                <td class="text-white"><%=link_to song.album.artist.name, artist_path(song.album.artist), class: 'text-white'%> </td>
-                <td class="text-white"><%=link_to song.album.name, album_path(song.album), class: 'text-white'%></td>
-                <td><%=song.album.release_year%> </td>
-                <td><%= button_to "delete", playlist_remove_song_path(@playlist.id), params: {id: @playlist.id, song_id: song.id}, :method => :delete, class: 'btn btn-outline-light'%></td>
+                <td class="text-white"><%=link_to song[:song_name], song_path(song[:song_id]), class: 'text-white'%> </td>
+                <td class="text-white"><%=link_to song[:artist_name], artist_path(song[:artist_id]), class: 'text-white'%> </td>
+                <td class="text-white"><%=link_to song[:album_name], album_path(song[:album_id]), class: 'text-white'%></td>
+                <td><%=song[:release_year]%> </td>
+                <td><%= button_to "delete", playlist_remove_song_path(@playlist.id), params: {id: @playlist.id, song_id: song[:song_id]}, :method => :delete, class: 'btn btn-outline-light'%></td>
             </tr>
         <%end%>
     </tbody>

@@ -1,12 +1,12 @@
 class PlaylistsController < ApplicationController
     before_action :set_playlist, only: [:show, :update, :destroy, :remove_song]
     def show
+        @songs = @playlist.playlist_show(params[:search])
     end
 
     def index
         @playlists = Playlist.all
         @user = current_user
-        @songs = Song.playlist_search(params[:search])
     end
 
     def new

@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<h1>Artist List:</h1>
-<%@artists.each do |artist|%>
-<%=link_to artist.name, artist%> 
-<% if artist.genre %>
-|| Genre: 
-<%= link_to artist.genre.name, genre_path(artist.genre)%> <br>
-<%end%>
-<%end%>
-=======
 <h1 class="text-white">All Artist</h1>
 
 
@@ -29,4 +19,3 @@
         <%end%> 
     </tbody>
 </table>
->>>>>>> 1ed6734cd5e447667787e7e10949ae5929e7af59
