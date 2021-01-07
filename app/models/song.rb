@@ -6,9 +6,9 @@ class Song < ApplicationRecord
 
     def self.search(search)
         if search  
-            Song.where("lower(name) LIKE ?", "%" + search.downcase + "%").limit(10)
+            Song.where("lower(name) LIKE ?", "%" + search.downcase + "%")
         else
-            Song.all.limit(10)
+            Song.all
         end
     end
 end
