@@ -1,6 +1,6 @@
 <h1 class="text-white"><%=@song.name%></h1>
-<div class="text-white">by <%=link_to @song.album.artist.name, artist_path(@song.album.artist), class: 'text-white'%> </div><br><br>
-
+<div class="text-white">by: <%=link_to @song.album.artist.name, artist_path(@song.album.artist), class: 'text-white'%> </div>
+<div class="text-white">Album: <%=link_to @song.album.name, album_path(@song.album.id), class: 'text-white'%> </div><br><br>
 <%= render partial: "songs_in_playlists/new" %> 
 <% if flash[:errors] %>
     <div class="text-secondary"><%= "song already added to playlist" %></div>

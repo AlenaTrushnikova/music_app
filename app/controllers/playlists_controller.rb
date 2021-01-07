@@ -6,7 +6,7 @@ class PlaylistsController < ApplicationController
     def index
         @playlists = Playlist.all
         @user = current_user
-        @songs = Song.playlist_search(params[:search])
+        # @songs = Song.playlist_search(params[:search])
     end
 
     def new

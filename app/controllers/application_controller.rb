@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
     helper_method :logged_in? 
     helper_method :current_playlist
+    helper_method :next_slice
     # before_action :require_login
 
     # private
@@ -21,6 +22,10 @@ class ApplicationController < ActionController::Base
 
     def authorized
         redirect_to root_path unless logged_in?
+    end
+
+    def next_slice
+
     end
 
 end
