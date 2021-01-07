@@ -1,6 +1,15 @@
 <%# <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p> %>
 
+<% if flash[:errors] %>
+   <div class ="form-group row text-white"> 
+      <% flash[:errors].each do |error| %>
+         <div class ="form-group row text-white"> 
+            <%= error %>
+         </div>
+      <% end %>
+<% end %>
+
 <h1 class="text-white">Login</h1>
 
 <%= form_tag '/login' do %>
