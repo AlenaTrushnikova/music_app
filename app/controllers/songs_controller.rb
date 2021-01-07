@@ -1,7 +1,11 @@
 class SongsController < ApplicationController
 
     def index
-        @songs = Song.search(params[:search])
+        if !params[:page].nil? && params[:page].to_i <= 0
+            return redirect_to songs_path
+        end
+        @songs = Song.search(params[:search]).page(params[:page]).per_page(15)
+        @last_page = (Song.search(params[:search]).count.to_f / 15).ceil
     end
 
     def show
