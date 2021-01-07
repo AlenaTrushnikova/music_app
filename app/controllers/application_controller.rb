@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     end
 
     def next_slice
-
+        
     end
 
 end
