@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row g-2">
-        <% @playlists.each do |playlist| %> 
+        <% current_user.playlists.each do |playlist| %> 
             <div class="col-6">
                 <h4 class="p-3 bg-dark"> 
                     <%= link_to playlist.name, playlist, class: 'text-success' %> 

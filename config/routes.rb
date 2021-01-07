@@ -6,14 +6,16 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get 'authorized' , to: 'sessions#page_requires_login'
   post 'add_song', to: 'songs#add_song_to_playlist'
-  resources :albums
-  resources :genres
-  resources :artists
-  resources :songs
+  resources :albums, only: [:index, :show]
+  # resources :genres
+  resources :artists, only: [:index, :show]
+  resources :songs, only: [:index, :show]
+  resources :playlists, only: [:index, :show]
   resources :playlists do
     delete 'remove_song'
   end
   resources :songs_in_playlists, only: [:new, :create]
+  resources :users, only: [:new, :show]
   resources :users do 
     resources :playlists, module: :users 
   end

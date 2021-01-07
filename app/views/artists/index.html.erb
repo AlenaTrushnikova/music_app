@@ -20,7 +20,7 @@
             <tr>
                 <td style="width:40%"><%=link_to artist.name, artist, class: 'text-white'%> </td>
                 <% if artist.genre %>
-                <td style="width:40%"><%=link_to artist.genre.name, genre_path(artist.genre), class: 'text-white'%> </td>
+                <td style="width:40%" class='text-white'><%=artist.genre.name %> </td>
                 <% end %>
                 <td style="width:20%" align="center"><%=link_to artist.artist_songs, artist, class: 'text-white'%></td>
             </tr>
