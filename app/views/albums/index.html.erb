@@ -2,7 +2,7 @@
 
 <%= form_tag(albums_path, method: :get) do%>
      <form class="form-inline md-form mr-auto mb-4">
-        <%= text_field_tag :search, params[:search], class: 'search-line mr-sm-2', placeholder: 'Search by name'%>
+        <%= text_field_tag :search, params[:search], class: 'search-line mr-sm-2', placeholder: 'Search by album name'%>
     </form>
 <%end%> <br>
 
@@ -26,3 +26,13 @@
         <%end%> 
     </tbody>
 </table>
+
+<div class="btn-group" role="group">
+  <%if params[:page].to_i > 1%>
+    <%= button_to "prev", albums_path, album_params: {:page => (params[:page].to_i - 1).to_s}, :method => :get, class: 'btn btn-light'%> &nbsp;
+  <%end %>
+
+  <%if params[:page].to_i < @last_album_page %>
+    <%= button_to "next", albums_path, params: {:page => ((params[:page] ? params[:page].to_i : 1) + 1).to_s}, :method => :get, class: 'btn btn-success'%>
+  <%end %>
+</div>

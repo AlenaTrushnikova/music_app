@@ -3,16 +3,14 @@ class Album < ApplicationRecord
     belongs_to :artist
 
     def album_songs
-        self.songs.length
+        self.songs.count
     end
 
-    def self.search(search)
+    def self.album_search(search)
         if search  
-            Album.where("lower(name) LIKE ?", "%" + search.downcase + "%").slice(0..10)
+            Album.where("lower(name) LIKE ?", "%" + search.downcase + "%")
         else
-            @first_index = 0
-            @last_index = 25
-            Album.all.slice(@first_index...@last_index)
+            Album.all
         end
     end
 

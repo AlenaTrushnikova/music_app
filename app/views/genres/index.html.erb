@@ -1,4 +1,18 @@
-<h1 class="text-white">Genres List:</h1>
-<%@genres.each do |genre|%>
-<%=link_to genre.name, genre%> <br>
-<%end%>
+<h1 class="text-white">Genres</h1>
+<table style="width:50%" class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th style="width:40%" scope="col">Genre</th>
+      <th style="width:60%" scope="col">#of artists</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@genres.each do |genre|%>
+      <tr>
+        <td style="width:40%" class="text-white"><%=link_to genre.name, genre, class: 'text-white'%> </td>
+        <td style="width:30%" class="text-white"><%=link_to genre.artist.name, artist_path(genre.artist), class: 'text-white'%> </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
