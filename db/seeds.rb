@@ -22,7 +22,8 @@ top_artists = [
     "The Beatles",
 "The Beach Boys",
 "Bob Dylan",
-"Marvin Gaye",
+"Marvin Gaye"
+=begin
 "The Rolling Stones",
 "The Clash",
 "Elvis Presley",
@@ -303,6 +304,7 @@ top_artists = [
 "MGMT",
 "Boz Scaggs",
 "The Stone Roses"
+=end
 ]
 
 
