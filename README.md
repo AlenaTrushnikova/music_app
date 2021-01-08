@@ -1,17 +1,19 @@
 # 🎶 Welcome to MusicApp
 
-Welcome to the MusicApp! A user can create an account, create their own playlists, browse through songs and add them to the created playlists. The user can also delete songs from playlists as well as delete playlists.
+Welcome to the **MusicApp**! A user can create an account, create their own playlists, browse through songs using search bar and add them to the created playlists. The user can also delete songs from playlists as well as delete playlists.
 
 ## 🎥 Video demo
-Check the [video demo](LINK) of how the Bookstore works.
+Check the [video demo](https://youtu.be/2P876L8iRH4) of how the Bookstore works.
 
-### 👉 Models and User Stories UPDATE
-1. As a user you can set a username and a budget
-2. As a user you can purchase/return a book
-3. As a user you can browse books by category or author
-4. As a user you can see top 5 best selling books
-5. As a user you can check/update your budget
-6. As a user you can finish your visit
+### 👉 User Stories UPDATE
+1. As a user you can **create an account** with unique name, valid password and email
+2. As a user you can **create/delete playlists**
+3. As a user you can **add songs to playlists**
+4. As a user you can **delete songs from playlists**
+5. As a user you can **browse** song/album/artist **using search bar**
+6. As a user you can navigate through songs/album/artist lists using **prev** and **next** buttons
+7. As a user you can **log out** and **sing in** back
+
 
 ## 🚀 Install Instructions
 1. Fork and clone this repository
