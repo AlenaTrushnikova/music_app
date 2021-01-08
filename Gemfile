@@ -60,7 +60,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
-
+#gem for securing api
+gem 'dotenv-rails'
 gem 'bcrypt'
 gem 'rest-client'
 gem 'pry'
@@ -69,4 +70,6 @@ gem 'json', '~> 1.8', '>= 1.8.3'
 #
 # gem for pagination
 gem 'will_paginate', '~> 3.1.1'
+
+
 

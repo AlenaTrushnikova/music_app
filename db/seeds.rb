@@ -307,9 +307,9 @@ top_artists = [
 
 
 #returns all artist names in API w/ Artist descriptions
+api_key = ENV["AUDIODB_KEY"]
 @artist_array = []
 @album_ids = [] 
-api_key = 523532
 top_artists.each do |artist|
     begin
         audiodb = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=#{artist}"

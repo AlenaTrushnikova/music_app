@@ -1,4 +1,3 @@
-require 'pry'
 require 'rest-client'
 require 'json'
 
@@ -294,20 +293,3 @@ top_artists = [
 ]
 
 
-# api_key = 523532
-# audiodb = RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=awefasdf"
-# name = JSON.parse(audiodb)["artists"][0]["strArtist"]
-# bio = JSON.parse(audiodb)["artists"][0]["strBiographyEN"]
-
-album_db = RestClient.get "theaudiodb.com/api/v1/json/523532/searchalbum.php?s=daft_punk"
-name = JSON.parse(album_db)["album"][1]["strAlbum"]
-
-puts name
-
-
-@artist_array.each do |artist|
-    genre_db = RestClient.get RestClient.get "theaudiodb.com/api/v1/json/#{api_key}/search.php?s=#{artist}"
-    artist_id = Artist.find_by(name: artist).id
-    genre = JSON.parse(genre_db)["artists"][0]["strGenre"]
-    Genre.create(name: genre, artist_id: artist_id)
-end
