@@ -3,7 +3,7 @@
 Welcome to the **MusicApp**! A user can create an account, create their own playlists, browse through songs using search bar and add them to the created playlists. The user can also delete songs from playlists as well as delete playlists.
 
 ## 🎥 Video demo
-Check the [video demo](https://youtu.be/2P876L8iRH4) of how the Bookstore works.
+Check the [video demo](https://youtu.be/2P876L8iRH4) of how the Music App works.
 
 ### 👉 User Stories UPDATE
 1. As a user you can **create an account** with unique name, valid password and email
